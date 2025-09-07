@@ -20,7 +20,7 @@ COPY . .
 
 RUN pnpm build
 
-# Production Immage
+# Production Image
 FROM base AS runner
 WORKDIR /app
 
