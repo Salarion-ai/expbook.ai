@@ -1,5 +1,5 @@
-import {RefObject, useEffect} from "react";
-import {useMotionValue} from "motion/react";
+import { useMotionValue } from "motion/react";
+import { type RefObject, useEffect } from "react";
 
 export const useRelativeMousePosition = (to: RefObject<HTMLElement | null>) => {
   const mouseX = useMotionValue(0);
@@ -7,14 +7,14 @@ export const useRelativeMousePosition = (to: RefObject<HTMLElement | null>) => {
 
   const updateMousePosition = (event: MouseEvent) => {
     if (!to.current) return;
-    const {top, left} = to.current.getBoundingClientRect();
+    const { top, left } = to.current.getBoundingClientRect();
     mouseX.set(event.x - left);
     mouseY.set(event.y - top);
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener('mousemove', updateMousePosition);
-    return () => window.removeEventListener('mousemove', updateMousePosition);
-  })
+    window.addEventListener("mousemove", updateMousePosition);
+    return () => window.removeEventListener("mousemove", updateMousePosition);
+  });
   return [mouseX, mouseY];
-}
+};

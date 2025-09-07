@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
+import { motion } from "motion/react";
+import Image, { type StaticImageData } from "next/image";
 import Avatar1 from "@/assets/avatars/avatar-1.png";
 import Avatar2 from "@/assets/avatars/avatar-2.png";
 import Avatar3 from "@/assets/avatars/avatar-3.png";
 import Avatar4 from "@/assets/avatars/avatar-4.png";
-import {motion} from "motion/react";
-import Image, {StaticImageData} from "next/image";
 
 const TESTIMONIALS = [
   {
@@ -33,25 +33,29 @@ const TESTIMONIALS = [
     avatarImg: Avatar4,
   },
 ] satisfies Array<{
-  text: string,
-  name: string,
-  position: string,
-  avatarImg: StaticImageData
-}>
+  text: string;
+  name: string;
+  position: string;
+  avatarImg: StaticImageData;
+}>;
 
 export function Testimonials() {
   return (
     <section className="py-20 md:py-24">
       <div className="container">
-        <h2 className="text-5xl md:text-6xl font-medium text-center tracking-tighter">Beyond Expectations.</h2>
-        <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto text-center tracking-tight mt-5">Our
-          revolutionary AI SEO tools have transformed our clients&apos; strategies.</p>
-        <div className="flex overflow-hidden mt-10 mask-[linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
+        <h2 className="text-center font-medium text-5xl tracking-tighter md:text-6xl">
+          Beyond Expectations.
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-white/70 tracking-tight md:text-xl">
+          Our revolutionary AI SEO tools have transformed our clients&apos;
+          strategies.
+        </p>
+        <div className="mask-[linear-gradient(to_right,transparent,black_20%,black_80%,transparent)] mt-10 flex overflow-hidden">
           <motion.div
-            initial={{x: '-50%'}}
-            animate={{x: '0'}}
+            initial={{ x: "-50%" }}
+            animate={{ x: "0" }}
             transition={{
-              repeat: Infinity,
+              repeat: Number.POSITIVE_INFINITY,
               duration: 50,
               ease: "linear",
             }}
@@ -60,11 +64,13 @@ export function Testimonials() {
             {[...TESTIMONIALS, ...TESTIMONIALS].map((testimonial, index) => (
               <div
                 key={index}
-                className="border border-muted p-6 md:p-10 rounded-xl bg-[linear-gradient(to_bottom_left,rgb(140,69,255,0.3),black)] max-w-xs md:max-w-md flex-none"
+                className="max-w-xs flex-none rounded-xl border border-muted bg-[linear-gradient(to_bottom_left,rgb(140,69,255,0.3),black)] p-6 md:max-w-md md:p-10"
               >
-                <p className="text-lg md:text-2xl tracking-tight">{testimonial.text}</p>
-                <div className="flex items-center gap-3 mt-5">
-                  <div className="relative after:content-[''] after:absolute after:inset-0 after:bg-[rgb(140,69,244)] after:mix-blend-soft-light after:rounded-lg before:content-[''] before:absolute before:inset-0 before:border before:border-white/30 before:z-10 before:rounded-lg">
+                <p className="text-lg tracking-tight md:text-2xl">
+                  {testimonial.text}
+                </p>
+                <div className="mt-5 flex items-center gap-3">
+                  <div className="relative before:absolute before:inset-0 before:z-10 before:rounded-lg before:border before:border-white/30 before:content-[''] after:absolute after:inset-0 after:rounded-lg after:bg-[rgb(140,69,244)] after:mix-blend-soft-light after:content-['']">
                     <Image
                       src={testimonial.avatarImg}
                       alt={testimonial.name}
@@ -73,7 +79,9 @@ export function Testimonials() {
                   </div>
                   <div>
                     <p>{testimonial.name}</p>
-                    <p className="text-white/50 text-sm">{testimonial.position}</p>
+                    <p className="text-sm text-white/50">
+                      {testimonial.position}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -82,5 +90,5 @@ export function Testimonials() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -48,6 +48,6 @@ jobs:
         env:
           CI: true
       - name: Run TypeScript check
-        run: pnpm ts
+        run: pnpm typecheck
         env:
           CI: true

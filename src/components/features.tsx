@@ -1,9 +1,20 @@
 "use client";
 
+import {
+  animate,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  type ValueAnimationTransition,
+} from "motion/react";
+import {
+  type ComponentPropsWithoutRef,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import ProductImage from "@/assets/product-image.png";
-import {animate, motion, useMotionTemplate, useMotionValue, ValueAnimationTransition,} from "motion/react";
-import {ComponentPropsWithoutRef, useEffect, useRef, useState} from "react";
-import {Icons} from "@/components/icons";
+import { Icons } from "@/components/icons";
 
 const tabs = [
   {
@@ -32,7 +43,8 @@ const tabs = [
   },
 ];
 
-type FeatureTabProps = (typeof tabs)[number] & ComponentPropsWithoutRef<"div"> & { selected: boolean }
+type FeatureTabProps = (typeof tabs)[number] &
+  ComponentPropsWithoutRef<"div"> & { selected: boolean };
 
 const FeatureTab = (props: FeatureTabProps) => {
   const tabRef = useRef<HTMLDivElement>(null);
@@ -46,7 +58,8 @@ const FeatureTab = (props: FeatureTabProps) => {
 
     xPercentage.set(0);
     yPercentage.set(0);
-    const {height, width} = tabRef.current?.getBoundingClientRect();
+    const { height, width } = tabRef.current.getBoundingClientRect();
+
     const circumference = height * 2 + width * 2;
     const times = [
       0,
@@ -59,33 +72,34 @@ const FeatureTab = (props: FeatureTabProps) => {
     const options: ValueAnimationTransition = {
       times,
       duration: 5,
-      repeat: Infinity,
+      repeat: Number.POSITIVE_INFINITY,
       repeatType: "loop",
       ease: "linear",
     };
 
     animate(xPercentage, [0, 100, 100, 0, 0], options);
     animate(yPercentage, [0, 0, 100, 100, 0], options);
-  }, [props.selected]);
+  }, [props.selected, xPercentage, yPercentage]);
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: <div> element required for the animation to work
     <div
-      className="border border-muted flex items-center p-2.5 gap-2.5 rounded-xl relative cursor-pointer hover:bg-muted/30"
+      className="relative flex cursor-pointer items-center gap-2.5 rounded-xl border border-muted p-2.5 hover:bg-muted/30"
       ref={tabRef}
       onClick={props.onClick}
     >
       {props.selected && (
         <motion.div
-          style={{maskImage}}
-          className="absolute inset-0 -m-px border border-[#A369FF] rounded-xl"
+          style={{ maskImage }}
+          className="-m-px absolute inset-0 rounded-xl border border-[#A369FF]"
         />
       )}
-      <div className="size-12 border border-muted rounded-lg inline-flex items-center justify-center">
-        <props.icon className="size-5"/>
+      <div className="inline-flex size-12 items-center justify-center rounded-lg border border-muted">
+        <props.icon className="size-5" />
       </div>
       <div className="font-medium">{props.title}</div>
       {props.isNew && (
-        <div className="text-xs rounded-full text-white px-2 py-0.5 bg-[#8c44ff] font-semibold">
+        <div className="rounded-full bg-[#8c44ff] px-2 py-0.5 font-semibold text-white text-xs">
           New
         </div>
       )}
@@ -113,31 +127,31 @@ export function Features() {
     animate(
       backgroundSizeX,
       [backgroundSizeX.get(), 100, tabs[index].backgroundSizeX],
-      animateOptions
+      animateOptions,
     );
     animate(
       backgroundPositionX,
       [backgroundPositionX.get(), tabs[index].backgroundPositionX],
-      animateOptions
+      animateOptions,
     );
     animate(
       backgroundPositionY,
       [backgroundPositionY.get(), tabs[index].backgroundPositionY],
-      animateOptions
+      animateOptions,
     );
   };
 
   return (
     <section className="py-20 md:py-24">
       <div className="container">
-        <h2 className="text-5xl md:text-6xl font-medium text-center tracking-tighter">
+        <h2 className="text-center font-medium text-5xl tracking-tighter md:text-6xl">
           Elevate your SEO efforts.
         </h2>
-        <p className="text-white/70 text-lg md:text-xl max-w-2xl mx-auto text-center tracking-tight mt-5">
+        <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-white/70 tracking-tight md:text-xl">
           From small startups to large enterprises, our AI-driven tool has
           revolutionized the way businesses approach SEO.
         </p>
-        <div className="mt-10 grid lg:grid-cols-3 gap-3">
+        <div className="mt-10 grid gap-3 lg:grid-cols-3">
           {tabs.map((tab, index) => (
             <FeatureTab
               {...tab}
@@ -147,8 +161,9 @@ export function Features() {
             />
           ))}
         </div>
-        <motion.div className="border border-muted rounded-xl p-2.5 mt-3">
-          <div className="aspect-video bg-cover border border-muted rounded-lg"
+        <motion.div className="mt-3 rounded-xl border border-muted p-2.5">
+          <div
+            className="aspect-video rounded-lg border border-muted bg-cover"
             style={{
               backgroundPosition: backgroundPosition.get(),
               backgroundSize: backgroundSize.get(),
