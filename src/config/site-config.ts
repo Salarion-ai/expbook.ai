@@ -5,7 +5,7 @@ export const siteConfig = {
   links: {
     repositoryUrl: "https://github.com/MrInspection/ia-startup-landing-page",
     creatorGithubUrl: "https://github.com/MrInspection/",
-    deploymentUrl: "https://splabs-ai-startup-lp.vercel.app/"
+    deploymentUrl: "https://splabs-ai-startup-lp.vercel.app/",
   },
   openGraph: {
     imageUrl: "https://splabs-ai-startup-lp.vercel.app/opengraph-image.png",
@@ -15,8 +15,25 @@ export const siteConfig = {
   twitter: {
     creator: "@MrInspection",
     cardType: "summary_large_image",
-    imageUrl: "https://splabs-ai-startup-lp.vercel.app/opengraph-image.png"
+    imageUrl: "https://splabs-ai-startup-lp.vercel.app/opengraph-image.png",
   },
-}
-
-export type SiteConfig = typeof siteConfig
+  navItems: [
+    {
+      label: "Features",
+      href: "#",
+    },
+    {
+      label: "Developers",
+      href: "#",
+    },
+    {
+      label: "Pricing",
+      href: "#",
+    },
+    {
+      label: "Changelog",
+      href: "#",
+    },
+  ],
+};
+export type SiteConfig = typeof siteConfig;
