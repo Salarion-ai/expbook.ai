@@ -1,5 +1,4 @@
-/** biome-ignore-all lint/suspicious/noUnknownAtRules: false positive */
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -90,10 +89,7 @@
     @apply mx-auto container max-w-7xl px-8;
   }
   html {
-    @apply scroll-smooth
-  }
-  ::-webkit-scrollbar {
-    width: 5px;
+    @apply scroll-smooth } ::-webkit-scrollbar { width: 5px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
