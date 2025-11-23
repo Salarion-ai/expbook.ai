@@ -79,8 +79,7 @@ export function HeroSection() {
           EXP BOOK
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-center text-lg text-white/70 md:text-xl">
-          Elevate your site&apos;s visibility effortlessly with AI, where smart
-          technology meets user-friendly SEO tools.
+          یکبار تجربه / یک عمر درآمد
         </p>
         <div className="mt-5 flex justify-center">
           <ActionButton label="Custemi" />
