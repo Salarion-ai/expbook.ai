@@ -15,7 +15,7 @@ export function HeroSection() {
   const backgroundPositionY = useTransform(
     scrollYProgress,
     [0, 1],
-    [-300, 300],
+    [-300, 300]
   );
 
   return (
@@ -76,14 +76,14 @@ export function HeroSection() {
       {/* Hero Section Content Logic */}
       <div className="container relative mt-16">
         <h1 className="bg-[radial-gradient(100%_100%_at_top_left,white,white,rgb(74,32,138,0.5))] bg-white bg-clip-text text-center font-semibold text-8xl text-transparent tracking-tighter md:text-[168px] md:leading-none">
-          AI SEO
+          EXP BOOK
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-center text-lg text-white/70 md:text-xl">
           Elevate your site&apos;s visibility effortlessly with AI, where smart
           technology meets user-friendly SEO tools.
         </p>
         <div className="mt-5 flex justify-center">
-          <ActionButton label="Join Waitlist" />
+          <ActionButton label="Custemi" />
         </div>
       </div>
     </motion.section>

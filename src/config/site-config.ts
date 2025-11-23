@@ -19,19 +19,19 @@ export const siteConfig = {
   },
   navItems: [
     {
-      label: "Features",
+      label: "کتاب تجربه",
       href: "#",
     },
     {
-      label: "Developers",
+      label: "هوش و زیبایی",
       href: "#",
     },
     {
-      label: "Pricing",
+      label: "جوابها",
       href: "#",
     },
     {
-      label: "Changelog",
+      label: "تجربه شما",
       href: "#",
     },
   ],
